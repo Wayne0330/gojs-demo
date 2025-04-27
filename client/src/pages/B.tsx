@@ -69,6 +69,19 @@ function B() {
         linkFromPortIdProperty: "fromPort", // 連線來源的 port 屬性名稱
         linkToPortIdProperty: "toPort", // 連線目的地的 port 屬性名稱
       }),
+
+      allowHorizontalScroll: false, // 禁止水平滾動
+      allowVerticalScroll: false,
+    });
+
+    //自適應大小
+    diagram.addDiagramListener("InitialLayoutCompleted", function () {
+      diagram.zoomToFit();
+
+      // 避免圖太小，自訂一下最小縮放
+      if (diagram.scale > 1) {
+        diagram.scale = 1; // 不要放大超過 100%
+      }
     });
 
     // 設定節點樣板，使用空字串代表預設樣板

@@ -39,6 +39,16 @@ function initDiagram() {
       new go.TextBlock({ margin: 8, editable: true }).bindTwoWay("text") // 綁定文本屬性，實現文本的雙向數據綁定
     );
 
+  //自適應大小
+  diagram.addDiagramListener("InitialLayoutCompleted", function () {
+    diagram.zoomToFit();
+
+    // 避免圖太小，自訂一下最小縮放
+    if (diagram.scale > 1) {
+      diagram.scale = 1; // 不要放大超過 100%
+    }
+  });
+
   // 定義滑塊的行為邏輯
   function sliderActions(alwaysVisible: any) {
     return {
