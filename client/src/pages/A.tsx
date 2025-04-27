@@ -9,15 +9,18 @@ function initDiagram() {
     "undoManager.isEnabled": true,
 
     // 設定點擊創建工具的原型節點資料
-    "clickCreatingTool.archetypeNodeData": {
-      text: "new node", // 節點的文字內容
-      color: "lightblue", // 節點的顏色
-    },
+    // "clickCreatingTool.archetypeNodeData": {
+    //   text: "new node", // 節點的文字內容
+    //   color: "lightblue", // 節點的顏色
+    // },
 
     // 設定圖表模型為 GraphLinksModel，並指定連結的鍵值屬性
     model: new go.GraphLinksModel({
       linkKeyProperty: "key", // 連結的鍵值屬性名稱
     }),
+
+    allowHorizontalScroll: false, // 禁用水平滾動
+    allowVerticalScroll: false, // 禁用垂直滾動
   });
 
   // 設定節點模板
